@@ -1,0 +1,38 @@
+[
+  {
+    "ID Transacción": "9c",
+    "Tipo de Transacción": "Crédito",
+    "Establecimiento": "Deporte C",
+    "Horario": "2024-11-21 21:53:28",
+    "Producto": "Artículo Deportivo",
+    "Ciudad - Estado": "Cali - Valle del Cauca (Colombia)",
+    "Valor (USD)": 221
+  },
+  {
+    "ID Transacción": "8c",
+    "Tipo de Transacción": "Crédito",
+    "Establecimiento": "Panadería Dulce Pan",
+    "Horario": "2024-11-21 21:39:28",
+    "Producto": "Arepas",
+    "Ciudad - Estado": "Bogotá - Cundinamarca (Colombia)",
+    "Valor (USD)": 4
+  },
+  {
+    "ID Transacción": "7c",
+    "Tipo de Transacción": "Crédito",
+    "Establecimiento": "Recarga Fácil",
+    "Horario": "2024-11-21 21:35:28",
+    "Producto": "Recarga de 10 dólares",
+    "Ciudad - Estado": "Bogotá - Cundinamarca (Colombia)",
+    "Valor (USD)": 10
+  },
+  {
+    "ID Transacción": "6c",
+    "Tipo de Transacción": "Crédito",
+    "Establecimiento": "Tienda de Juegos C",
+    "Horario": "2024-11-15 21:35:28",
+    "Producto": "Juego Digital",
+    "Ciudad - Estado": "Bogotá - Cundinamarca (Colombia)",
+    "Valor (USD)": 36
+  }
+]

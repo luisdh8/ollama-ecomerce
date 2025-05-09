@@ -1,0 +1,10 @@
+Recomendación: "Realizar Verificación Manual"
+
+Clasificación del posible fraude: "Fraude basado en patrones inusuales de gasto"
+
+Justificación:
+1. **Horario Atípico**: La transacción se realizó a las 21:53:28, un horario poco común para compras de artículos deportivos en establecimientos físicos, lo que podría indicar actividad sospechosa.
+2. **Monto Relativamente Alto**: El valor de la transacción es de 221 USD, considerado significativo para este tipo de artículos, y puede no coincidir con el patrón habitual del cliente.
+3. **Inconsistencia Geográfica**: La compra se realizó en Cali, Valle del Cauca, una ubicación que puede no coincidir con el historial de transacciones geográficas del usuario, especialmente si las compras previas fueron en otras regiones o países.
+
+Dado que la transacción muestra características que escapan del comportamiento normal y es marcada como "Posible Fraude", se sugiere realizar una verificación manual antes de proceder con cualquier otra medida para asegurar la exactitud de la evaluación del fraude y proteger al cliente de potenciales irregularidades.

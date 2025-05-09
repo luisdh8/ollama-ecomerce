@@ -1,0 +1,11 @@
+ID Transacción,Tipo de Transacción,Establecimiento,Horario,Producto,Ciudad - Estado,Valor (USD)
+9c,Crédito,Deporte C,2024-11-21 21:53:28,Artículo Deportivo,Cali - Valle del Cauca (Colombia),221
+8c,Crédito,Panadería Dulce Pan,2024-11-21 21:39:28,Arepas,Bogotá - Cundinamarca (Colombia),4
+7c,Crédito,Recarga Fácil,2024-11-21 21:35:28,Recarga de 10 dólares,Bogotá - Cundinamarca (Colombia),10
+6c,Crédito,Tienda de Juegos C,2024-11-15 21:35:28,Juego Digital,Bogotá - Cundinamarca (Colombia),36
+5c,Crédito,Tienda de Juegos C,2024-11-10 15:54:28,Juego Digital,Bogotá - Cundinamarca (Colombia),30
+4c,Crédito,Panadería Trigo Dorado,2024-11-10 13:48:28,Arepas,Bogotá - Cundinamarca (Colombia),2
+3c,Crédito,Recarga Fácil,2024-11-10 13:50:28,Recarga de 10 dólares,Bogotá - Cundinamarca (Colombia),10
+1d,Débito,Panadería Dulce Pan,2024-11-10 09:36:28,Desayuno,Bogotá - Cundinamarca (Colombia),5
+2c,Crédito,Librería A,2024-11-10 08:47:28,Libro OpenAI,Bogotá - Cundinamarca (Colombia),19
+1c,Crédito,Tienda de Juegos D,2024-11-09 14:48:28,Juego de Estrategia,Bogotá - Cundinamarca (Colombia),37
