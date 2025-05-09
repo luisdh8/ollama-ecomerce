@@ -65,7 +65,7 @@ def main():
     """
     
     # Ruta del archivo CSV
-    ruta_archivo = "datos/lista_de_compras_100_clientes.csv"
+    ruta_archivo = "datos/lista-compra-300-clientes.csv"
     
     # Cargar los datos
     prompt_usuario = cargar(ruta_archivo)
