@@ -1,96 +1,82 @@
+import requests
 from dotenv import load_dotenv
 import os
-import requests
 import json
-import time
 
-# Cargar variables de entorno
 load_dotenv()
 
-# Configuración de Ollama desde .env
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
-MODELO = os.getenv("OLLAMA_MODEL", "llama3")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL")
+print(f"Usando URL: {OLLAMA_BASE_URL}")
+print(f"Usando modelo: {OLLAMA_MODEL}")
 
-def cargar(nombre_del_archivo):
-    """Carga el contenido de un archivo de texto"""
-    try:
-        with open(nombre_del_archivo, "r", encoding="utf-8") as archivo:
-            datos = archivo.read()
-            return datos
-    except IOError as e:
-        print(f"Error al leer el archivo: {e}")
-        return None
-
-def llamar_ollama(prompt_sistema, prompt_usuario):
-    """Función para enviar peticiones a la API de Ollama"""
-    url = f"{OLLAMA_BASE_URL}/api/generate"
-    
-    # Combinamos los prompts para enviarlos a Ollama
-    prompt_completo = f"{prompt_sistema}\n\n{prompt_usuario}"
+def generate_completion(messages):
+    """
+    Genera una respuesta utilizando Ollama API
+    """
+    url = f"{OLLAMA_BASE_URL}/api/chat"
     
     payload = {
-        "model": MODELO,
-        "prompt": prompt_completo,
+        "model": OLLAMA_MODEL,
+        "messages": messages,
         "stream": False
     }
     
-    print(f"Enviando solicitud a Ollama con el modelo {MODELO}...")
-    inicio = time.time()
+    print(f"Enviando solicitud a: {url}")
+    print(f"Payload: {json.dumps(payload, indent=2)}")
     
     try:
         response = requests.post(url, json=payload)
+        print(f"Código de estado: {response.status_code}")
+        
         if response.status_code == 200:
-            fin = time.time()
-            tiempo_total = round(fin - inicio, 2)
-            print(f"Respuesta recibida en {tiempo_total} segundos")
-            return response.json()["response"]
+            try:
+                return response.json()
+            except json.JSONDecodeError as e:
+                print(f"Error al decodificar JSON: {e}")
+                print(f"Respuesta recibida: {response.text[:200]}...")
+                return {"message": {"content": "Error al procesar la respuesta de Ollama."}}
         else:
-            print(f"Error en la solicitud: {response.status_code}")
-            print(response.text)
+            print(f"Error: {response.status_code}")
+            print(f"Respuesta: {response.text[:200]}...")
             return None
-    except Exception as e:
-        print(f"Error al llamar a Ollama: {e}")
-        print("\nAsegúrate de que Ollama esté en ejecución con: 'ollama serve'")
-        print(f"Y verifica que el modelo '{MODELO}' esté descargado con: 'ollama list'")
+    except requests.exceptions.RequestException as e:
+        print(f"Error de conexión: {e}")
         return None
 
-def main():
-    # Definir el prompt del sistema
-    prompt_sistema = """
-    Identifique el perfil de compra para cada cliente a continuación.
-    
-    El formato de salida debe ser:
-    
-    cliente - describe el perfil del cliente en 3 palabras
-    """
-    
-    # Ruta del archivo CSV
-    ruta_archivo = "datos/lista-compra-300-clientes.csv"
-    
-    # Cargar los datos
-    prompt_usuario = cargar(ruta_archivo)
-    
-    if not prompt_usuario:
-        print(f"No se pudo cargar el archivo: {ruta_archivo}")
-        return
-    
-    # Verificar longitud del CSV
-    print(f"Tamaño del archivo CSV: {len(prompt_usuario)} caracteres")
-    
-    # Llamar a Ollama y obtener respuesta
-    respuesta = llamar_ollama(prompt_sistema, prompt_usuario)
-    
-    if respuesta:
-        print("\nRESULTADO DEL ANÁLISIS:")
-        print("-" * 40)
-        print(respuesta)
-        
-        # Guardar resultado en un archivo
-        with open("resultado_analisis.txt", "w", encoding="utf-8") as archivo:
-            archivo.write(respuesta)
-        print("\nResultado guardado en 'resultado_analisis.txt'")
-    else:
-        print("No se pudo obtener una respuesta de Ollama")
+# Definir los mensajes
+messages = [
+    {
+        "role": "system",
+        "content": "Eres un asistente de un e-commerce de productos sustentable, cuando te pidan productos devuelve solo el nombre sin considerar la descripción"
+    },
+    {
+        "role": "user",
+        "content": "Liste 3 productos sustentables"
+    }
+]
 
-if __name__ == "__main__":
-    main()
+# Obtener la respuesta
+print("Generando respuesta...")
+response = generate_completion(messages)
+
+# Imprimir el contenido de la respuesta
+if response:
+    print("\nRespuesta completa recibida:")
+    print(json.dumps(response, indent=2, ensure_ascii=False)[:500])
+    
+    if isinstance(response, dict) and "message" in response:
+        print("\nContenido de la respuesta:")
+        print(response["message"]["content"])
+    elif isinstance(response, dict) and "response" in response:
+        # Formato alternativo de respuesta de Ollama
+        print("\nContenido de la respuesta:")
+        print(response["response"])
+    else:
+        print("\nNo se pudo extraer el contenido de la respuesta con el formato esperado.")
+        print("Estructura de la respuesta:")
+        print(type(response))
+        if isinstance(response, dict):
+            print("Claves disponibles:", list(response.keys()))
+else:
+    print("No se obtuvo una respuesta válida.")
