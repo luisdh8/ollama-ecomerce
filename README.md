@@ -63,16 +63,11 @@ git clone https://github.com/luisdh8/ollama-ecomerce.git
 cd ollama-ecomerce
 ```
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-3. Set up environment:
+2. Set up environment:
 ```bash
 cp .env.example .env
 ```
-Edit the `.env` file with your preferences:
+3. Edit the `.env` file with your preferences:
 ```ini
 OLLAMA_BASE_URL=http://localhost:11434
 OLLAMA_MODEL=llama3:instruct
@@ -105,7 +100,7 @@ python analizador_transacciones.py datos/transacciones.csv
 
 ### Review Analysis
 ```bash
-python analizador_sentimientos.py datos/reviews/
+python analizador_sentimientos.py
 ```
 
 ## Module Documentation
@@ -125,11 +120,21 @@ python analizador_sentimientos.py datos/reviews/
 ## Data Structure
 
 ```
-datos/
-│── transacciones/        # Transaction CSVs
-│── reviews/              # Product reviews
-│── productos/            # Product listings
-└── resultados/           # Analysis outputs
+.
+├── contador_tokens.py
+├── seleccion_modelo.py
+├── analizador_sentimientos.py
+├── clasificador.py
+├── analizador_transacciones.py
+├── main.py
+├── datos/
+│ ├── lista-compra-300-clientes.csv
+│ ├── evaluaciones_camisetas_algodon.txt
+│ ├── evaluaciones_jeans_reciclados.txt
+│ ├── evaluaciones_maquillaje.txt
+│ ├── analisis_evaluaciones_camisetas_algodon.txt
+│ ├── analisis_evaluaciones_jeans_reciclados.txt
+│ └── analisis_evaluaciones_maquillaje.txt
 ```
 
 ## Contributing
@@ -150,32 +155,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - Open-source community for sustainable commerce tools
 - Early adopters for valuable feedback
 ```
-
-### Key Features of This README:
-
-1. **Visual Enhancements**:
-   - Shields/badges for quick info
-   - Mermaid diagram for architecture
-   - Clear code blocks
-
-2. **Improved Structure**:
-   - Logical flow from overview to details
-   - Separate sections for different user needs
-   - Better module documentation
-
-3. **Practical Details**:
-   - Specific model requirements
-   - Example .env configuration
-   - Directory structure visualization
-
-4. **Usage Examples**:
-   - Both programmatic and CLI usage
-   - Sample outputs
-   - Interactive mode explanation
-
-5. **Maintenance Info**:
-   - Clear contribution guidelines
-   - License visibility
-   - Acknowledgments section
-
-¿Te gustaría que añada alguna sección específica adicional o modifique algún aspecto del README?
