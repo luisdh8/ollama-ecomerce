@@ -128,13 +128,13 @@ python analizador_sentimientos.py
 ├── analizador_transacciones.py
 ├── main.py
 ├── datos/
-│ ├── lista-compra-300-clientes.csv
-│ ├── evaluaciones_camisetas_algodon.txt
-│ ├── evaluaciones_jeans_reciclados.txt
-│ ├── evaluaciones_maquillaje.txt
-│ ├── analisis_evaluaciones_camisetas_algodon.txt
-│ ├── analisis_evaluaciones_jeans_reciclados.txt
-│ └── analisis_evaluaciones_maquillaje.txt
+│   ├── lista-compra-300-clientes.csv
+│   ├── evaluaciones_camisetas_algodon.txt
+│   ├── evaluaciones_jeans_reciclados.txt
+│   ├── evaluaciones_maquillaje.txt
+│   ├── analisis_evaluaciones_camisetas_algodon.txt
+│   ├── analisis_evaluaciones_jeans_reciclados.txt
+│   └── analisis_evaluaciones_maquillaje.txt
 ```
 
 ## Contributing
